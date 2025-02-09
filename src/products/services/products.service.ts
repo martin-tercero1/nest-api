@@ -2,6 +2,7 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { Product } from '../entities/product.entity';
 import {
   CreateProductDto,
+  FilterProductDto,
   UpdateProductDto,
 } from 'src/products/dtos/products.dtos';
 
@@ -30,7 +31,11 @@ export class ProductsService {
     },
   ];
   // In the future, these methods should manipulate or connect to the DB
-  findAll() {
+  findAll(params?: FilterProductDto) {
+    if (params) {
+      const { limit, offset } = params;
+    }
+
     return this.products;
   }
 

@@ -16,7 +16,7 @@ export class AppService {
     // const apiKey = this.configService.get('API_KEY');
     // const dbName = this.configService.get('DATABASE_NAME');
     console.log(dbName);
-    // console.log('Tasks from another API', this.tasks);
+    console.log('Tasks from another API', this.tasks);
     return `Hello World! ${apiKey} ${dbName}`;
   }
 }

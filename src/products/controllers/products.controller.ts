@@ -19,6 +19,7 @@ import { ParseIntPipe } from 'src/common/parse-int/parse-int.pipe';
 
 import {
   CreateProductDto,
+  FilterProductDto,
   UpdateProductDto,
 } from 'src/products/dtos/products.dtos';
 
@@ -40,15 +41,15 @@ export class ProductsController {
   @ApiOperation({ summary: 'List of products' })
   // method
   getMany(
-    @Query('limit', ParseIntPipe) limit: number = 100,
-    @Query('offset', ParseIntPipe) offset: number = 0,
-    @Query('brand') brand: string,
+    @Query() params: FilterProductDto,
+    // @Query('offset', ParseIntPipe) offset: number = 0,
+    // @Query('brand') brand: string,
   ): object {
     // The best way to communicate from the backend is with JSON
     // return {
     //   message: `Products with a limit of ${limit} and offset of ${offset} - ${brand}`,
     // };
-    return this.productsService.findAll();
+    return this.productsService.findAll(params);
   }
   // All endpoints that are not dynamic should be declared first
   @Get('/filter')

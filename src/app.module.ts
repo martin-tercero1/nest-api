@@ -43,7 +43,6 @@ import * as Joi from 'joi';
   controllers: [AppController],
   providers: [
     AppService,
-
     {
       provide: 'TASKS',
       useFactory: async (http: HttpService) => {
